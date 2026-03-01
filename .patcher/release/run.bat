@@ -9,7 +9,7 @@ if %errorlevel% neq 0 (
 )
 
 echo Running deployment script...
-powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0hs.ps1"
+powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0hs\hs.ps1"
 
 echo.
 if %errorlevel% neq 0 (

@@ -23,7 +23,8 @@ jobs:
 
       - name: Create ZIP from .patcher/release folder
         run: |
-          zip -r "$ZIP_NAME" .patcher/release
+          cd .patcher/release
+          zip -r "../../$ZIP_NAME" *
 
       - name: Generate SHA256
         run: |
