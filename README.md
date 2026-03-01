@@ -25,6 +25,8 @@ We translate and summarize official announcements published by the WindSlayer te
 
 All translations are unofficial and provided for convenience only.
 
+Follow here: [NEWS](https://github.com/wizley9999/windslayer.io/tree/main/news)
+
 ### 2. Guides (Tips & Tricks)
 
 This section provides gameplay-focused content such as:
@@ -36,6 +38,8 @@ This section provides gameplay-focused content such as:
 
 Content is written based on gameplay experience, community knowledge, and verified in-game testing when possible.
 
+Follow here: [Tips & Tricks](https://github.com/wizley9999/windslayer.io/tree/main/tips-and-tricks)
+
 ### 3. Tools & Utilities
 
 To assist global players in accessing and understanding the Korean server, this project may provide:
@@ -46,6 +50,8 @@ To assist global players in accessing and understanding the Korean server, this 
 All tools are provided for convenience and educational purposes. Use at your own discretion.
 
 Release builds are distributed via GitHub Releases.
+
+Follow here: [Tools & Utilities](https://github.com/wizley9999/windslayer.io/tree/main/tools-and-utilities)
 
 ## Disclaimer
 
