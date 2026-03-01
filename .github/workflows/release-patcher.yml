@@ -1,0 +1,41 @@
+name: Release Patcher
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set date-based version
+        run: |
+          VERSION=$(date +'%Y%m%d')
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "TAG=v$VERSION" >> $GITHUB_ENV
+          echo "ZIP_NAME=WS_English_Patcher_v$VERSION.zip" >> $GITHUB_ENV
+
+      - name: Create ZIP from .patcher/release folder
+        run: |
+          zip -r "$ZIP_NAME" .patcher/release
+
+      - name: Generate SHA256
+        run: |
+          sha256sum "$ZIP_NAME" > SHA256.txt
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$TAG" \
+            "$ZIP_NAME" \
+            "SHA256.txt" \
+            --title "WS English Patcher v$VERSION" \
+            --notes "Release for WS English Patcher\n\nVersion: v$VERSION\n\nIncludes:\n- Latest patcher (ZIP archive)\n- SHA256 checksum file" \
+            --latest
