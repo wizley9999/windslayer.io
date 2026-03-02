@@ -111,3 +111,7 @@ The author is not responsible for:
 - Any consequences resulting from file modification
 
 Users are responsible for ensuring compliance with the game's Terms of Service.
+
+## Screenshots
+
+![1](2026-03-01-language-patcher/1.png)
