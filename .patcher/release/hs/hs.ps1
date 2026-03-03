@@ -68,10 +68,10 @@ try {
 
     $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-    $backupDir = Join-Path $scriptDir "backup"
+    $backupRoot = Join-Path $scriptDir "backup"
 
-    if (-not (Test-Path $backupDir)) {
-        New-Item -ItemType Directory -Path $backupDir | Out-Null
+    if (-not (Test-Path $backupRoot)) {
+        New-Item -ItemType Directory -Path $backupRoot | Out-Null
     }
 
     $files = @(
@@ -85,6 +85,8 @@ try {
     )
 
     $timestamp = Get-Date -Format "yyyyMMddHHmmss"
+    $backupDir = Join-Path $backupRoot $timestamp
+    New-Item -ItemType Directory -Path $backupDir | Out-Null
 
     foreach ($file in $files) {
         $source = Join-Path $scriptDir $file
@@ -92,11 +94,7 @@ try {
 
         if (Test-Path $source) {
             if (Test-Path $dest) {
-                $name = [System.IO.Path]::GetFileNameWithoutExtension($file)
-                $ext  = [System.IO.Path]::GetExtension($file)
-
-                $backupName = "$name-bak-$timestamp$ext"
-                $backupPath = Join-Path $backupDir $backupName
+                $backupPath = Join-Path $backupDir $file
 
                 Copy-Item $dest $backupPath -Force
                 Write-Host "Backed up: $file -> $backupName"
