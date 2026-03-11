@@ -29,10 +29,10 @@ When executed, the tool will:
 
 #### 1. Download
 
-Download the latest release package in [here](https://github.com/wizley9999/windslayer.io/releases).
+Download the latest release package in [here](https://github.com/wizley9999/windslayer-guide/releases).
 
 ```
-https://github.com/wizley9999/windslayer.io/releases
+https://github.com/wizley9999/windslayer-guide/releases
 ```
 
 #### 2. Extract
