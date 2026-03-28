@@ -2,28 +2,26 @@
 
 A lightweight deployment tool that automatically applies English localization files to the Korean **WindSlayer** client.
 
-This tool is designed for global players who want a safer, faster, and more convenient way to patch language files without manually navigating the client directory.
+This tool is designed for global players who want a faster and more convenient way to patch language files without manually navigating the client directory.
 
 ## Overview
 
 The WindSlayer Language Patching Tool:
 
+- Checks for the latest version before applying the patch
 - Automatically detects the WindSlayer installation path using the `windslayer://` protocol
 - Locates the internal `hs` directory
-- Safely backs up existing files before replacing them
 - Applies updated localization files in one click
-- Provides a restore option to revert to a previous backup
 
 ### What This Tool Does
 
 When executed, the tool will:
 
-1. Detect the registered WindSlayer client path from Windows registry.
-2. Identify the `hs` folder inside the installation directory.
-3. Create a local `backup` folder.
-4. Create a timestamp-based backup directory.
-5. Backup any existing target files using a timestamped filename.
-6. Copy new localization files into the client directory.
+1. Check GitHub for the latest release version.
+2. If a newer version exists, display the download URL and cancel the patch.
+3. If up to date, detect the registered WindSlayer client path from the Windows registry.
+4. Identify the `hs` folder inside the installation directory.
+5. Copy new localization files into the client directory.
 
 ### How to Use
 
@@ -42,22 +40,20 @@ Extract all files into the same folder.
 The folder should contain:
 
 ```
-## PATCHERS
+## PATCHER
 
 - run.bat
-- hs.ps1
-- restore.bat
-- hs-restore.ps1
+- hs\hs.ps1
 
 ## RESOURCES
 
-- UILngKo.lng
-- QSTLngKo.lng
-- NPCLngKo.lng
-- MapLngKo.lng
-- ITMLngKo.lng
-- windslayer.hpt
-- windslayer.bct
+- hs\UILngKo.lng
+- hs\QSTLngKo.lng
+- hs\NPCLngKo.lng
+- hs\MapLngKo.lng
+- hs\ITMLngKo.lng
+- hs\windslayer.hpt
+- hs\windslayer.bct
 ```
 
 #### 3. Execute
@@ -74,48 +70,28 @@ Approve the request.
 
 The patching process will begin automatically.
 
-## Backup System
+## Update Check
 
-If a file already exists in the `hs` directory:
+Every time the patcher runs, it checks the latest release on GitHub before applying any files.
 
-- It will be copied into a local `backup` folder.
-- A new folder will be created using the following format:
-
-```
-backup/YYYYMMDDHHMMSS/
-```
-
-Example:
+If your patcher version is outdated:
 
 ```
-backup/20260302114533/
+A newer version of the patcher is available.
+  Current version : v20260301
+  Latest version  : v20260329
+
+Download the latest patcher from:
+  https://github.com/wizley9999/windslayer-guide/releases/tag/v20260329
+
+Patching has been cancelled. Please use the latest version.
 ```
 
-All replaced files from that session will be stored inside that folder.
+The patch will **not** be applied until you download and run the latest version.
 
-If the file does not exist in the client directory:
+This ensures that you always apply the most current and accurate localization files.
 
-- It will simply be copied without backup.
-
-## Restore System
-
-The tool includes a restore script.
-
-When executed:
-
-1. It scans the backup directory.
-2. Displays available backup folders sorted by date (newest first).
-3. Allows you to select a backup using an index number.
-4. Restores all files from the selected backup folder to the hs directory.
-
-Example selection screen:
-
-```
-Available backups:
--------------------
-[0] 2026-03-02 11:45:33 (20260302114533)
-[1] 2026-03-01 10:10:10 (20260301101010)
-```
+If you have no internet connection, the update check is skipped and the patch proceeds normally.
 
 ## Limitations
 

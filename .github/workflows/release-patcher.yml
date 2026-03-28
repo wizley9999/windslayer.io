@@ -21,6 +21,10 @@ jobs:
           echo "TAG=v$VERSION" >> $GITHUB_ENV
           echo "ZIP_NAME=WS_English_Patcher_v$VERSION.zip" >> $GITHUB_ENV
 
+      - name: Inject version into patcher script
+        run: |
+          sed -i "s/__PATCHER_VERSION__/$VERSION/" .patcher/release/hs/hs.ps1
+
       - name: Create ZIP from .patcher/release folder
         run: |
           cd .patcher/release
